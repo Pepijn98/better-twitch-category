@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name            Better Twitch Category
 // @namespace       https://vdbroek.dev
-// @version         1.0.0
+// @version         1.0.1
 // @description     Full sized scroll view when you expand the streamers list on category pages
 // @author          Pepijn van den Broek <pepijn@vdbroek.dev>
-// @match           https://www.twitch.tv/directory/game/*
+// @match           https://www.twitch.tv/*
 // @icon            https://www.google.com/s2/favicons?sz=64&domain=twitch.tv
 // @grant           none
 // @homepageURL     https://github.com/Pepijn98/better-twitch-category
