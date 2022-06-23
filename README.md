@@ -1,5 +1,6 @@
 # Better Twitch Category (BTC)
-Improve twitch's new category layout by hiding the preview when expanding the streamers list
+Today I saw the new Twitch category layout and got annoyed the preview takes up half the screen. \
+So, with that, I decided to improve Twitch's new category layout by hiding the preview when expanding the streamers list.
 
 ## Installing
 You need to have an extension that can load userscripts installed. \
