@@ -40,7 +40,6 @@
                     mute.click();
                 }
 
-                // Expanded
                 const elements = document.getElementsByClassName("Layout-sc-nxg1ff-0 hsKINT");
                 if (elements.length > 0) {
                     let hasPlayer = false;
