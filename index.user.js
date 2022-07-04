@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Better Twitch Category
 // @namespace       https://vdbroek.dev
-// @version         1.0.1
+// @version         1.0.2
 // @description     Full sized scroll view when you expand the streamers list on category pages
 // @author          Pepijn van den Broek <pepijn@vdbroek.dev>
 // @match           https://www.twitch.tv/*
@@ -13,13 +13,29 @@
 // @downloadURL     https://github.com/Pepijn98/better-twitch-category/raw/master/index.user.js
 // ==/UserScript==
 
-(function() {
+const wait = (ms) => (new Promise((r) => setTimeout(r, ms)));
+
+(async function() {
     'use strict';
+
+    let expanded = false;
 
     let fixedHeight = false;
 
     let preview = null;
     let isHidden = false;
+
+    // Loop util expand button is available
+    while (!expanded) {
+        const btn = document.querySelector("button[aria-label='Expand List']");
+        if (btn) {
+            btn.click();
+            expanded = true;
+        }
+
+        // Make sure it doesn't spam too much
+        await wait(500);
+    }
 
     new MutationObserver(function() {
         if ((/^http(s)?:\/\/(www\.)?twitch\.tv\/directory\/game\/.*$/ui).test(window.location.href)) {
@@ -32,6 +48,8 @@
                     if (elements.length > 0 && elements[0].childElementCount > 0 && elements[0].childNodes[0].classList.contains("scrollable-area")) {
                         const style = elements[0].getAttribute("style");
                         elements[0].style = (style ? style + " " : "") + "height: calc(100vh - 16.5rem) !important;";
+
+                        fixedHeight = true;
                     }
                 }
 
